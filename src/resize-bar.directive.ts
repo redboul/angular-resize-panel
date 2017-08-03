@@ -18,13 +18,13 @@ import { eventTypes } from './event-types';
 import { ResizeHandleDirective } from './resize-handle.directive';
 
 @Directive({
-  selector: '[resize-panel]'
+  selector: '[resizeBar]'
 })
-export class ResizePanelDirective implements AfterViewInit {
+export class ResizeBarDirective implements AfterViewInit {
 
   @Input() private direction: string;
   @Output() handleClick = new EventEmitter<any>();
-  
+
   @ContentChildren(ResizeHandleDirective)
   private resizeHandles: QueryList<ResizeHandleDirective>;
 

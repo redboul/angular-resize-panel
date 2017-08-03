@@ -1,8 +1,10 @@
-<div [class.horizontalSlideBar]="direction === 'y'" 
-  [class.verticalSlideBar]="direction !== 'y'"
-resize-panel [direction]="direction" (handleClick)="togglePanel($event)" 
+<div resizeBar
+  [class.horizontalSlideBar]="direction === 'y'"
+  [class.verticalSlideBar]="direction !== 'y'" 
+  [direction]="direction" 
+  (handleClick)="togglePanel($event)" 
 (@slide.done)="animationDone($event)" [@slide]="slideState" >
-   <div resize-handle
+   <div resizeHandle
     [class.handleBar]="direction === 'y'" 
     [class.handleBar-vertical]="direction !== 'y'">
       <div [class.handleBar-handle]="direction === 'y'" 

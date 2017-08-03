@@ -1,4 +1,4 @@
 export const eventTypes = {
-    cancel: 'cancelTrasition',
-    clickedInside: 'clickedInside'
+  cancel: 'cancelTrasition',
+  clickedInside: 'clickedInside'
 };

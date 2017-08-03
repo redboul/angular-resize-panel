@@ -1,15 +1,15 @@
-import { slide } from '../animations';
-import { eventTypes } from '../event-types';
+import { slide } from './animations';
+import { eventTypes } from './event-types';
 
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css'],
+  selector: 'resize-panel',
+  templateUrl: './resize-panel.component.html',
+  styleUrls: ['./resize-panel.component.css'],
   animations: [ slide ]
 })
-export class SliderComponent implements OnInit {
+export class ResizePanelComponent implements OnInit {
   @Input() direction?: string;
   @Input() defaultSize?: number;
   @Input() reducedSize?: number;

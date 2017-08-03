@@ -1,8 +1,8 @@
-import { ResizePanelDirective } from './resize-panel.directive';
+import { ResizeBarDirective } from './resize-bar.directive';
 
 describe('ResizePanelDirective', () => {
   it('should create an instance', () => {
-    const directive = new ResizePanelDirective();
+    const directive = new ResizeBarDirective(undefined);
     expect(directive).toBeTruthy();
   });
 });

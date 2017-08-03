@@ -2,22 +2,22 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { SliderComponent } from './slider/slider.component';
-import { ResizeHandleDirective } from './resize-handle.directive';
-import { ResizePanelDirective } from './resize-panel.directive';
+import { ResizePanelComponent } from './src/resize-panel.component';
+import { ResizeHandleDirective } from './src/resize-handle.directive';
+import { ResizeBarDirective } from './src/resize-bar.directive';
 
 @NgModule({
   declarations: [
-    ResizePanelDirective,
+    ResizeBarDirective,
     ResizeHandleDirective,
-    SliderComponent,
+    ResizePanelComponent,
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule
   ],
   exports: [
-    SliderComponent,
+    ResizePanelComponent,
   ]
 })
 export class SliderModule { }

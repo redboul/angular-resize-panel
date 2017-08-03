@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HorizontalSliderComponent } from './horizontal-slider.component';
+import { ResizePanelComponent } from './resize-panel.component';
 
 describe('ToolboxComponent', () => {
-  let component: HorizontalSliderComponent;
-  let fixture: ComponentFixture<HorizontalSliderComponent>;
+  let component: ResizePanelComponent;
+  let fixture: ComponentFixture<ResizePanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HorizontalSliderComponent ]
+      declarations: [ ResizePanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HorizontalSliderComponent);
+    fixture = TestBed.createComponent(ResizePanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
