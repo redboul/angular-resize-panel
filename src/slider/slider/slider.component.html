@@ -1,0 +1,15 @@
+<div [class.horizontalSlideBar]="direction === 'y'" 
+  [class.verticalSlideBar]="direction !== 'y'"
+resize-panel [direction]="direction" (handleClick)="togglePanel($event)" 
+(@slide.done)="animationDone($event)" [@slide]="slideState" >
+   <div resize-handle
+    [class.handleBar]="direction === 'y'" 
+    [class.handleBar-vertical]="direction !== 'y'">
+      <div [class.handleBar-handle]="direction === 'y'" 
+    [class.handleBar-handle-vertical]="direction !== 'y'"></div>
+  
+    </div>
+    <div [class.horizontalSlideBar]="direction === 'y'" 
+    [class.verticalSlideBar]="direction !== 'y'"
+    (click)="openPanel()" (touchstart)="openPanel()"><ng-content></ng-content></div>
+</div>

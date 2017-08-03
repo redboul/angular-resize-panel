@@ -1,0 +1,42 @@
+.horizontalSlideBar {
+    margin-top: 6px;
+}
+
+.verticalSlideBar {
+    margin-left: 6px;
+}
+.handleBar {
+  width: 100%;
+  position: absolute;
+  background-color: #222;
+  height: 6px;
+  top: 0;
+  cursor: ns-resize;
+}
+.handleBar-handle {
+  width: 20px;
+  height: 2px;
+  position: absolute;
+  top: 2px;
+  left: calc(50% - 10px);
+  background-color: #DDD;
+  border-radius: 20%;
+}
+
+.handleBar-vertical {
+  height: 100%;
+  position: absolute;
+  background-color: #222;
+  width: 6px;
+  left: 0;
+  cursor: ew-resize;
+}
+.handleBar-handle-vertical {
+  height: 20px;
+  width: 2px;
+  position: absolute;
+  left: 2px;
+  top: calc(50% - 10px);
+  background-color: #DDD;
+  border-radius: 20%;
+}

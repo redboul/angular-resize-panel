@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #AAA;
+    margin: 30px;
+}
+.first {
+    bottom: 0;
+}
+.red {
+    background-color: red;
+}
+.second {
+    right: 0;
+    background-color: green;
+}
