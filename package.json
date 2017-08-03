@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "e2e": "ng e2e"
+    "test": "karma start karma.conf.js --single-run"
   },
   "dependencies": {
     "@angular/animations": "4.3.3",
@@ -31,6 +31,8 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "tslint-loader": "^3.5.3",

@@ -1,28 +1,105 @@
-# ResizeApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
+# Angular Resize Panel
 
-## Development server
+## TL;DR
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Yet another Angular resize panel module.
 
-## Code scaffolding
+## Motivation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+This library aims to provide an Angular resize element module with only `@angular/animations` as dependency. 
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```
+npm i -D angular-resize-panel
+```
 
-## Running unit tests
+or
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+yarn add angular-resize-panel
+```
 
-## Running end-to-end tests
+## Features
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+There are three expected behaviours:
+* Press mouse on resize bar and move mouse to change the panel size in one direction
+* Click on resize bar when it is open to collapse it with ease animation
+* Click on resize bar when it is closed to expand it with ease animation
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+If you use SystemJS to load your files, you might have to update your config:
+
+```javascript
+System.config({
+    map: {
+        'angular-resize-panel': 'node_modules/angular-resize-panel/bundles/index.umd.js'
+    }
+});
+```
+
+Import `ResizePanelModule` in the `NgModule` of your application.
+
+```javascript
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from '@angular/core';
+import {ResizePanelModule} from 'angular-resize-panel';
+
+@NgModule({
+    imports: [
+        BrowserModule,
+        ResizePanelModule
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
+## Develop
+
+Install dependencies with:
+
+```
+npm i
+```
+
+or
+
+```
+yarn
+```
+
+### Test
+
+Karma is doing the job
+
+```
+npm test
+```
+
+or 
+```
+yarn test
+```
+
+
+### Build
+
+```
+npm run build
+```
+
+or 
+```
+yarn run build
+```
+
+
+
+## Status
+
+Currently working in Chrome with mouse and tap events.  
+Working in Firefox but text in panel seems to be selected  
