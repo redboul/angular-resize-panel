@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "test": "karma start karma.conf.js --single-run"
+    "test": "karma start karma.conf.js --no-single-run"
   },
   "dependencies": {
     "@angular/animations": "4.3.3",
@@ -15,7 +15,6 @@
     "@angular/platform-browser-dynamic": "4.3.3",
     "core-js": "2.4.1",
     "rxjs": "5.4.2",
-    "webpack": "^3.4.1",
     "zone.js": "0.8.16"
   },
   "devDependencies": {
@@ -23,19 +22,19 @@
     "@types/node": "~6.0.60",
     "awesome-typescript-loader": "^3.2.2",
     "codelyzer": "~2.0.0",
-    "jasmine-core": "~2.5.2",
+    "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
+    "karma": "2.0.3",
     "karma-chrome-launcher": "~2.0.0",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
+    "karma-jasmine": "~2.0.4",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.4",
-    "ts-node": "~2.0.0",
+    "karma-webpack": "^1.7.1",
     "tslint": "~4.5.0",
     "tslint-loader": "^3.5.3",
-    "typescript": "~2.2.0"
+    "typescript": "~2.5.2",
+    "webpack": "^3.5.5"
   }
 }
