@@ -1,8 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 const webpack = require('./webpack.config');
-console.log(webpack);
-delete webpack.entry;
 
 module.exports = function (config) {
   config.set({
@@ -12,12 +10,15 @@ module.exports = function (config) {
       { pattern: './src/test.ts', watched: false }
     ],
     preprocessors: {
-      './src/**/*.ts': ['webpack'],
-      './src/test.ts': ['webpack']
+      './src/test.ts': ['webpack', 'sourcemap']
     },
     coverageIstanbulReporter: {
       reports: [ 'html', 'lcovonly' ],
       fixWebpackSourcePaths: true
+    },
+
+    mime: {
+      'text/x-typescript': ['ts','tsx']
     },
 
     webpack,
@@ -27,7 +28,7 @@ module.exports = function (config) {
     reporters:  ['progress', 'coverage-istanbul'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false

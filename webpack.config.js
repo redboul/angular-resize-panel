@@ -26,8 +26,6 @@ module.exports = {
     },
 
     // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//],
-
     module: {
         rules: [{
             enforce: 'pre',
@@ -37,6 +35,10 @@ module.exports = {
         }, {
             test: /\.ts$/,
             loader: 'awesome-typescript-loader?declaration=false'
+        },{
+            test: /\.js$/,
+            loaders: ['babel-loader?cacheDirectory&presets[]=es2015&presets[]=es2017&presets[]=es2016' , 'eslint-loader' ],
+            exclude: /node_modules/
         }]
     },
 
