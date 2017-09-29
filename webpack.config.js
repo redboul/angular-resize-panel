@@ -33,8 +33,17 @@ module.exports = {
             loader: 'tslint-loader',
             exclude: ['node_modules']
         }, {
+            test: /\.css$/,
+            loader: 'raw-loader!css-loader'
+        }, {
+            test: /component\.html$/,
+            loader: 'html-loader?-attrs&root=' + __dirname + '/src'
+        }, {
             test: /\.ts$/,
-            loader: 'awesome-typescript-loader?declaration=false'
+            loader: [
+                'awesome-typescript-loader?declaration=false',
+                'angular2-template-loader'
+            ]
         },{
             test: /\.js$/,
             loaders: ['babel-loader?cacheDirectory&presets[]=es2015&presets[]=es2017&presets[]=es2016' , 'eslint-loader' ],
