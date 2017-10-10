@@ -34,7 +34,7 @@ module.exports = {
             exclude: ['node_modules']
         }, {
             test: /\.css$/,
-            loader: 'raw-loader!css-loader'
+            loader: 'raw-loader'
         }, {
             test: /component\.html$/,
             loader: 'html-loader?-attrs&root=' + __dirname + '/src'

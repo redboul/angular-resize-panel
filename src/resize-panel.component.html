@@ -4,7 +4,7 @@
   [direction]="direction" 
   (handleClick)="togglePanel($event)" 
 (@slide.done)="animationDone($event)" [@slide]="slideState" >
-   <div resizeHandle
+    <div resizeHandle
     [class.handleBar]="direction === 'y'" 
     [class.handleBar-vertical]="direction !== 'y'">
       <div [class.handleBar-handle]="direction === 'y'" 
