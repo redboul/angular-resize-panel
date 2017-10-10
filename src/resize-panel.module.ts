@@ -12,10 +12,6 @@ import { ResizeBarDirective } from './resize-bar.directive';
     ResizeHandleDirective,
     ResizePanelComponent,
   ],
-  imports: [
-    CommonModule,
-    BrowserAnimationsModule
-  ],
   exports: [
     ResizePanelComponent,
   ]
