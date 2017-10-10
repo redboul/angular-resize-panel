@@ -1,4 +1,4 @@
-import { animate, animateChild, state, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, state, style, transition, trigger, AnimationTriggerMetadata } from '@angular/animations';
 import { animation } from '@angular/animations';
 
 const slideInHorizontally = animation([ animate('400ms ease', style({
