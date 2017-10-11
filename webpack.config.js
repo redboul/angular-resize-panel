@@ -15,7 +15,7 @@ module.exports = {
         extensions: ['.ts', '.js']
     },
 
-    entry: './index',
+    entry: './public_api',
 
     output: {
         path: path.resolve('./bundles'),

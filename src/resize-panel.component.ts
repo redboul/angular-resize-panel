@@ -1,7 +1,7 @@
 import { slide } from './animations';
 import { eventTypes } from './event-types';
 
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'resize-panel',
@@ -13,6 +13,7 @@ export class ResizePanelComponent implements OnInit {
   @Input() direction?: string;
   @Input() defaultSize?: number;
   @Input() reducedSize?: number;
+  @Output() resized = new EventEmitter();
   slideState: any;
   type = '';
   constructor(private el: ElementRef) { }
@@ -46,9 +47,11 @@ export class ResizePanelComponent implements OnInit {
         event.element.style.width = this.slideState.params.amount + 'px';
       }
     }
+    this.resized.next('done');
   }
 
   togglePanel(event) {
+    console.log('resize-panel');
     if (event.type === eventTypes.cancel) {
       this.slideState = { value: `${this.type}cancel` };
     } else {
