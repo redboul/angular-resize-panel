@@ -51,7 +51,6 @@ export class ResizePanelComponent implements OnInit {
   }
 
   togglePanel(event) {
-    console.log('resize-panel');
     if (event.type === eventTypes.cancel) {
       this.slideState = { value: `${this.type}cancel` };
     } else {
