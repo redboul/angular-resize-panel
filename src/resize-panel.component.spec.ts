@@ -23,97 +23,132 @@ describe('ToolboxComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DivToBeResizedComponent);
-    component = fixture.componentInstance;
-    resizeComponent = fixture.debugElement.query(By.css('resize-panel')).componentInstance;
-    fixture.detectChanges();
-  });
-
-  const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
-    const event: Event = document.createEvent('Event');
-    Object.assign(event, eventData);
-    event.initEvent(eventType, true, true);
-    target.dispatchEvent(event);
-  };
-
-  const executeEventsAndReturnWidth = (domEvents): number => {
-    const elm: HTMLElement = fixture.debugElement.query(By.css('.handleBar-handle-vertical')).nativeElement;
-    domEvents.forEach(event => {
-      triggerDomEvent(event.name, elm, event.data);
+  describe('', () => {
+    beforeEach(() => {
+      fixture = TestBed.createComponent(DivToBeResizedComponent);
+      component = fixture.componentInstance;
+      resizeComponent = fixture.debugElement.query(By.css('resize-panel')).componentInstance;
+      fixture.detectChanges();
     });
-    flushMicrotasks();
-    fixture.detectChanges();
-    const width = fixture.debugElement.query(By.css('resize-panel div')).nativeElement.style.width;
-    return Number(width.substring(0, width.length - 2));
-  }
 
-  it('moves panel size', fakeAsync(() => {
-    const domEvents: any[] = [{
-      name: 'mousedown',
-      data: {
-        pageX: 150,
+    const triggerDomEvent: Function = (eventType: string, target: HTMLElement | Element, eventData: Object = {}) => {
+      const event: Event = document.createEvent('Event');
+      Object.assign(event, eventData);
+      event.initEvent(eventType, true, true);
+      target.dispatchEvent(event);
+    };
+
+    const executeEventsAndReturnWidth = (domEvents): number => {
+      const elm: HTMLElement = fixture.debugElement.query(By.css('.handleBar-handle-vertical')).nativeElement;
+      domEvents.forEach(event => {
+        triggerDomEvent(event.name, elm, event.data);
+      });
+      flushMicrotasks();
+      fixture.detectChanges();
+      const width = fixture.debugElement.query(By.css('resize-panel div')).nativeElement.style.width;
+      return Number(width.substring(0, width.length - 2));
+    };
+    it('moves panel size', fakeAsync(() => {
+      const domEvents: any[] = [{
+        name: 'mousedown',
+        data: {
+          pageX: 150,
+          pageY: 200
+        }
+      }, {
+        name: 'mousemove',
+        data: {
+          pageX: 155,
+          pageY: 200
+        }
+      }];
+      const firstWidth = executeEventsAndReturnWidth(domEvents);
+      const secondWidth = executeEventsAndReturnWidth([{name: 'mousemove', data: {
+        pageX: 145,
         pageY: 200
-      }
-    }, {
-      name: 'mousemove',
-      data: {
-        pageX: 155,
-        pageY: 200
-      }
-    }];
-    const firstWidth = executeEventsAndReturnWidth(domEvents);
-    const secondWidth = executeEventsAndReturnWidth([{name: 'mousemove', data: {
-      pageX: 145,
-      pageY: 200
-    }}]);
-    expect(secondWidth - firstWidth).toEqual(10);
-  }));
+      }}]);
+      expect(secondWidth - firstWidth).toEqual(10);
+    }));
 
 
-  fit('closes panel and opens it', fakeAsync(() => {
-    const domEvents: any[] = [{
-      name: 'mousedown',
-      data: {
-        pageX: 150,
-        pageY: 200
-      }
-    }, {
-      name: 'mouseup',
-      data: {
-        pageX: 150,
-        pageY: 200
-      }
-    }];
-    const elm: HTMLElement = fixture.debugElement.query(By.css('.handleBar-handle-vertical')).nativeElement;
-    domEvents.forEach(event => {
-      triggerDomEvent(event.name, elm, event.data);
-    });
-    let formerWidth;
-    const subscription = component.resized$.subscribe(event => {
-      expect(event).toEqual('done');
-      console.log('width', formerWidth);
-      if (!formerWidth) {
-        formerWidth = fixture.debugElement.query(By.css('resize-panel div')).nativeElement.style.width;
-        expect(formerWidth).toEqual('50px');
-        console.log('pouet');
-      } else {
+    it('closes panel and opens it', fakeAsync(() => {
+      const domEvents: any[] = [{
+        name: 'mousedown',
+        data: {
+          pageX: 150,
+          pageY: 200
+        }
+      }, {
+        name: 'mouseup',
+        data: {
+          pageX: 150,
+          pageY: 200
+        }
+      }];
+      const elm: HTMLElement = fixture.debugElement.query(By.css('.handleBar-handle-vertical')).nativeElement;
+      domEvents.forEach(event => {
+        triggerDomEvent(event.name, elm, event.data);
+      });
+      let formerWidth;
+      const subscription = component.resized$.subscribe(event => {
+        expect(event).toEqual('done');
         formerWidth = fixture.debugElement.query(By.css('resize-panel div')).nativeElement.style.width;
         expect(formerWidth).toEqual('300px');
-        console.log('caca');
-      }
-    });
-    flushMicrotasks();
-    fixture.detectChanges();
-    console.log('coucou', fixture.debugElement.query(By.css('resize-panel div')).nativeElement.style.width);
+      });
+      flushMicrotasks();
+      fixture.detectChanges();
 
-    domEvents.forEach(_event => {
-      triggerDomEvent(_event.name, elm, _event.data);
+      domEvents.forEach(_event => {
+        triggerDomEvent(_event.name, elm, _event.data);
+      });
+      flushMicrotasks();
+      fixture.detectChanges();
+    }));
+  });
+
+  describe('ResizeComponent functions', () => {
+    beforeEach(() => {
+      fixture = TestBed.createComponent(DivToBeResizedComponent);
+      component = fixture.componentInstance;
+      resizeComponent = fixture.debugElement.query(By.css('resize-panel')).componentInstance;
     });
-    flushMicrotasks();
-    fixture.detectChanges();
-  }));
+    describe('vertivally', () => {
+      beforeEach(() => {
+        resizeComponent.direction = 'y';
+        fixture.detectChanges();
+      });
+      describe('#ngOnInit', () => {
+        it('inits component to be resize horizontally', () => {
+          expect(resizeComponent.type).toEqual('v');
+          expect(resizeComponent.slideState).toEqual({value: 'vcancel'});
+          expect(resizeComponent.defaultSize).toEqual(300);
+          expect(resizeComponent.reducedSize).toEqual(50);
+        });
+      });
+    });
+    describe('horizontally', () => {
+      beforeEach(() => {
+        fixture.detectChanges();
+      });
+      describe('#ngOnInit', () => {
+        it('inits component to be resize horizontally', () => {
+          expect(resizeComponent.type).toEqual('');
+          expect(resizeComponent.slideState).toEqual({value: 'cancel'});
+          expect(resizeComponent.defaultSize).toEqual(300);
+          expect(resizeComponent.reducedSize).toEqual(50);
+        });
+      });
+      describe('#openPanel', () => {
+        it('calls toggle Panel', () => {
+          spyOn(resizeComponent, 'togglePanel');
+          resizeComponent.openPanel();
+          expect(resizeComponent.togglePanel).toHaveBeenCalledWith({ type: 'clickedInside', amount: 300 });
+        });
+      });
+    });
+  });
 });
+
 @Component({
   selector: 'handle-bar-container',
   template: `<resize-panel class="square" 
